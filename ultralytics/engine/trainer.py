@@ -342,6 +342,9 @@ class BaseTrainer:
         self.optimizer.zero_grad()  # zero any resumed gradients to ensure stability on train start
         while True:
             self.epoch = epoch
+            raw_model = self.model.module if hasattr(self.model, "module") else self.model
+            setattr(raw_model, "kd_epoch", epoch)
+            setattr(raw_model, "kd_total_epochs", self.epochs)
             self.run_callbacks("on_train_epoch_start")
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")  # suppress 'Detected lr_scheduler.step() before optimizer.step()'
@@ -405,17 +408,17 @@ class BaseTrainer:
 
                 # Log
                 if RANK in {-1, 0}:
-                    loss_length = self.tloss.shape[0] if len(self.tloss.shape) else 1
-                    pbar.set_description(
-                        ("%11s" * 2 + "%11.4g" * (2 + loss_length))
-                        % (
-                            f"{epoch + 1}/{self.epochs}",
-                            f"{self._get_memory():.3g}G",  # (GB) GPU memory util
-                            *(self.tloss if loss_length > 1 else torch.unsqueeze(self.tloss, 0)),  # losses
-                            batch["cls"].shape[0],  # batch size, i.e. 8
-                            batch["img"].shape[-1],  # imgsz, i.e 640
-                        )
-                    )
+                    loss_items = self.tloss if len(self.tloss.shape) else torch.unsqueeze(self.tloss, 0)
+                    eta = self._format_eta(self._remaining_train_time(epoch, i, nb))
+                    progress_values = [
+                        f"{epoch + 1}/{self.epochs}",
+                        f"{self._get_memory():.3g}G",
+                        *[f"{float(x):.4g}" for x in loss_items],
+                        f"{batch['cls'].shape[0]}",
+                        f"{batch['img'].shape[-1]}",
+                        eta,
+                    ]
+                    pbar.set_description("".join(f"{value:>11}" for value in progress_values))
                     self.run_callbacks("on_batch_end")
                     if self.args.plots and ni in self.plot_idx:
                         self.plot_training_samples(batch, ni)
@@ -645,6 +648,21 @@ class BaseTrainer:
     def progress_string(self):
         """Returns a string describing training progress."""
         return ""
+
+    @staticmethod
+    def _format_eta(seconds):
+        seconds = max(int(seconds), 0)
+        hours, remainder = divmod(seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+
+    def _remaining_train_time(self, epoch, batch_index, num_batches):
+        elapsed = max(time.time() - self.train_time_start, 1e-9)
+        if self.args.time:
+            return max(self.args.time * 3600 - elapsed, 0.0)
+        total_batches = max((self.epochs - self.start_epoch) * num_batches, 1)
+        completed_batches = max((epoch - self.start_epoch) * num_batches + batch_index + 1, 1)
+        return max(elapsed / completed_batches * (total_batches - completed_batches), 0.0)
 
     # TODO: may need to put these following functions into callback
     def plot_training_samples(self, batch, ni):

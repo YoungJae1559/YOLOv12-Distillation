@@ -14,6 +14,8 @@ from .tasks import (
     yaml_model_load,
 )
 
+from .modules import LSConv
+
 __all__ = (
     "attempt_load_one_weight",
     "attempt_load_weights",
@@ -26,4 +28,5 @@ __all__ = (
     "SegmentationModel",
     "ClassificationModel",
     "BaseModel",
+    "LSConv",
 )

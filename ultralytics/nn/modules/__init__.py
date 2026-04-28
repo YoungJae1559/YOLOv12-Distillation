@@ -89,6 +89,8 @@ from .transformer import (
     TransformerLayer,
 )
 
+from .lsconv import LSConv
+
 __all__ = (
     "Conv",
     "Conv2",
@@ -161,5 +163,6 @@ __all__ = (
     "PSA",
     "TorchVision",
     "Index",
-    "A2C2f"
+    "A2C2f",
+    "LSConv",
 )

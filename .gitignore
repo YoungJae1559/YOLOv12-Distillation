@@ -1,1 +1,6 @@
-*__pycache__/
+runs/
+yolov12m.pt
+yolov12n.pt
+yolov12s.pt
+yolov12x.pt
+flash_attn*.whl

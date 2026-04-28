@@ -1,0 +1,515 @@
+1. You Only Look Once: Unified, Real-Time Object Detection
+@inproceedings{redmon2016you,
+  title={You only look once: Unified, real-time object detection},
+  author={Redmon, Joseph and Divvala, Santosh and Girshick, Ross and Farhadi, Ali},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={779--788},
+  year={2016}
+}
+
+2. YOLO9000: Better, Faster, Stronger.
+@inproceedings{redmon2017yolo9000,
+  title={YOLO9000: better, faster, stronger},
+  author={Redmon, Joseph and Farhadi, Ali},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={7263--7271},
+  year={2017}
+}
+
+3. YOLOv3: An Incremental Improvement.
+@article{redmon2018yolov3,
+  title={Yolov3: An incremental improvement},
+  author={Redmon, Joseph and Farhadi, Ali},
+  journal={arXiv preprint arXiv:1804.02767},
+  year={2018}
+}
+
+4. YOLOv4: Optimal Speed and Accuracy of Object Detection.
+@article{bochkovskiy2020yolov4,
+  title={Yolov4: Optimal speed and accuracy of object detection},
+  author={Bochkovskiy, Alexey and Wang, Chien-Yao and Liao, Hong-Yuan Mark},
+  journal={arXiv preprint arXiv:2004.10934},
+  year={2020}
+}
+
+5. YOLOv5
+Glenn Jocher, K Nishimura, T Mineeva, and RJAM Vilariño.
+yolov5. https://github.com/ultralytics/yolov5/tree, 2, 2020.
+1, 2, 6
+
+6. YOLOv6
+@article{li2023yolov6,
+  title={Yolov6 v3. 0: A full-scale reloading},
+  author={Li, Chuyi and Li, Lulu and Geng, Yifei and Jiang, Hongliang and Cheng, Meng and Zhang, Bo and Ke, Zaidan and Xu, Xiaoming and Chu, Xiangxiang},
+  journal={arXiv preprint arXiv:2301.05586},
+  year={2023}
+}
+
+7. YOLOv7
+@inproceedings{wang2023yolov7,
+  title={YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors},
+  author={Wang, Chien-Yao and Bochkovskiy, Alexey and Liao, Hong-Yuan Mark},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={7464--7475},
+  year={2023}
+}
+
+8. YOLOv8
+Ultralytics. Yolov8 anchor-free bounding box prediction - issue 189. https://github.com/ultralytics/
+ultralytics/issues/189, 2023.
+
+9. YOLOv9
+@inproceedings{wang2024yolov9,
+  title={Yolov9: Learning what you want to learn using programmable gradient information},
+  author={Wang, Chien-Yao and Yeh, I-Hau and Mark Liao, Hong-Yuan},
+  booktitle={European conference on computer vision},
+  pages={1--21},
+  year={2024},
+  organization={Springer}
+}
+
+10. YOLOv10
+@article{wang2024yolov10,
+  title={Yolov10: Real-time end-to-end object detection},
+  author={Wang, Ao and Chen, Hui and Liu, Lihao and Chen, Kai and Lin, Zijia and Han, Jungong and Ding, Guiguang},
+  journal={Advances in neural information processing systems},
+  volume={37},
+  pages={107984--108011},
+  year={2024}
+}
+
+11. YOLOv11
+Glenn Jocher. yolov11. https://github.com/ultralytics, 2024.
+1, 2, 4, 5, 6, 7, 8, 9, 10, 11
+
+12. YOLOv12
+@article{tian2025yolov12,
+  title={Yolov12: Attention-centric real-time object detectors},
+  author={Tian, Yunjie and Ye, Qixiang and Doermann, David},
+  journal={arXiv preprint arXiv:2502.12524},
+  year={2025}
+}
+
+13. DN-DETR: Accelerate DETR Training by Introducing Query Denoising.
+@inproceedings{li2022dn,
+  title={Dn-detr: Accelerate detr training by introducing query denoising},
+  author={Li, Feng and Zhang, Hao and Liu, Shilong and Guo, Jian and Ni, Lionel M and Zhang, Lei},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={13619--13627},
+  year={2022}
+}
+
+14. RT-DETR
+@inproceedings{zhao2024detrs,
+  title={Detrs beat yolos on real-time object detection},
+  author={Zhao, Yian and Lv, Wenyu and Xu, Shangliang and Wei, Jinman and Wang, Guanzhong and Dang, Qingqing and Liu, Yi and Chen, Jie},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={16965--16974},
+  year={2024}
+}
+
+15. RT-DETRv2
+@article{lv2024rt,
+  title={Rt-detrv2: Improved baseline with bag-of-freebies for real-time detection transformer},
+  author={Lv, Wenyu and Zhao, Yian and Chang, Qinyao and Huang, Kui and Wang, Guanzhong and Liu, Yi},
+  journal={arXiv preprint arXiv:2407.17140},
+  year={2024}
+}
+
+16. CSPNet
+@inproceedings{wang2020cspnet,
+  title={CSPNet: A new backbone that can enhance learning capability of CNN},
+  author={Wang, Chien-Yao and Liao, Hong-Yuan Mark and Wu, Yueh-Hua and Chen, Ping-Yang and Hsieh, Jun-Wei and Yeh, I-Hau},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition workshops},
+  pages={390--391},
+  year={2020}
+}
+
+17. Designing Network Design Strategies Through Gradient Path Analysis.
+@article{wang2022designing,
+  title={Designing network design strategies through gradient path analysis},
+  author={Wang, Chien-Yao and Liao, Hong-Yuan Mark and Yeh, I-Hau},
+  journal={arXiv preprint arXiv:2211.04800},
+  year={2022}
+}
+
+18. FlashAttention
+@article{dao2022flashattention,
+  title={Flashattention: Fast and memory-efficient exact attention with io-awareness},
+  author={Dao, Tri and Fu, Dan and Ermon, Stefano and Rudra, Atri and R{\'e}, Christopher},
+  journal={Advances in neural information processing systems},
+  volume={35},
+  pages={16344--16359},
+  year={2022}
+}
+
+19. FlashAttention-2
+@article{dao2023flashattention,
+  title={Flashattention-2: Faster attention with better parallelism and work partitioning},
+  author={Dao, Tri},
+  journal={arXiv preprint arXiv:2307.08691},
+  year={2023}
+}
+
+20. Model Compression
+@inproceedings{buciluǎ2006model,
+  title={Model compression},
+  author={Buciluǎ, Cristian and Caruana, Rich and Niculescu-Mizil, Alexandru},
+  booktitle={Proceedings of the 12th ACM SIGKDD international conference on Knowledge discovery and data mining},
+  pages={535--541},
+  year={2006}
+}
+
+21. Distilling the Knowledge in a Neural Network.
+@article{hinton2015distilling,
+  title={Distilling the knowledge in a neural network},
+  author={Hinton, Geoffrey and Vinyals, Oriol and Dean, Jeff},
+  journal={arXiv preprint arXiv:1503.02531},
+  year={2015}
+}
+
+22. FitNets
+Adriana Romero, Nicolas Ballas, Samira Ebrahimi Kahou, Antoine Chassang, Carlo Gatta, and Yoshua Bengio. Fitnets:Hints for thin deep nets. arXiv preprint arXiv:1412.6550, 2014. 1
+
+23. Deep Mutual Learning.
+@inproceedings{zhang2018deep,
+  title={Deep mutual learning},
+  author={Zhang, Ying and Xiang, Tao and Hospedales, Timothy M and Lu, Huchuan},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={4320--4328},
+  year={2018}
+}
+
+24. Decoupled Knowledge Distillation
+@inproceedings{zhao2022decoupled,
+  title={Decoupled knowledge distillation},
+  author={Zhao, Borui and Cui, Quan and Song, Renjie and Qiu, Yiyu and Liang, Jiajun},
+  booktitle={Proceedings of the IEEE/CVF Conference on computer vision and pattern recognition},
+  pages={11953--11962},
+  year={2022}
+}
+
+25. Knowledge Distillation From a Stronger Teacher.
+  title={Knowledge distillation from a stronger teacher},
+  author={Huang, Tao and You, Shan and Wang, Fei and Qian, Chen and Xu, Chang},
+  journal={Advances in neural information processing systems},
+  volume={35},
+  pages={33716--33727},
+  year={2022}
+}
+
+26. Distilling Knowledge via Knowledge Review.
+@inproceedings{chen2021distilling,
+  title={Distilling knowledge via knowledge review},
+  author={Chen, Pengguang and Liu, Shu and Zhao, Hengshuang and Jia, Jiaya},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={5008--5017},
+  year={2021}
+}
+
+27. Relational Knowledge Distillation.
+@inproceedings{park2019relational,
+  title={Relational knowledge distillation},
+  author={Park, Wonpyo and Kim, Dongju and Lu, Yan and Cho, Minsu},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={3967--3976},
+  year={2019}
+}
+
+28. PKD
+@article{cao2022pkd,
+  title={Pkd: General distillation framework for object detectors via pearson correlation coefficient},
+  author={Cao, Weihan and Zhang, Yifan and Gao, Jianfei and Cheng, Anda and Cheng, Ke and Cheng, Jian},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={15394--15406},
+  year={2022}
+}
+
+29. A Comprehensive Overhaul of Feature Distillation.
+@inproceedings{heo2019comprehensive,
+  title={A comprehensive overhaul of feature distillation},
+  author={Heo, Byeongho and Kim, Jeesoo and Yun, Sangdoo and Park, Hyojin and Kwak, Nojun and Choi, Jin Young},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={1921--1930},
+  year={2019}
+}
+
+30. Mimicking Very Efficient Network for Object Detection.
+@inproceedings{li2017mimicking,
+  title={Mimicking very efficient network for object detection},
+  author={Li, Quanquan and Jin, Shengying and Yan, Junjie},
+  booktitle={Proceedings of the ieee conference on computer vision and pattern recognition},
+  pages={6356--6364},
+  year={2017}
+}
+
+31. Distilling Knowledge by Mimicking Features.
+@article{wang2021distilling,
+  title={Distilling knowledge by mimicking features},
+  author={Wang, Guo-Hua and Ge, Yifan and Wu, Jianxin},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={44},
+  number={11},
+  pages={8183--8195},
+  year={2021},
+  publisher={IEEE}
+}
+
+32. Improve Object Detection With Feature-Based Knowledge Distillation: Towards Accurate and Efficient Detectors.
+@inproceedings{zhang2020improve,
+  title={Improve object detection with feature-based knowledge distillation: Towards accurate and efficient detectors},
+  author={Zhang, Linfeng and Ma, Kaisheng},
+  booktitle={International conference on learning representations},
+  year={2020}
+}
+
+33. Focal and Global Knowledge Distillation for Detectors.
+@inproceedings{yang2022focal,
+  title={Focal and global knowledge distillation for detectors},
+  author={Yang, Zhendong and Li, Zhe and Jiang, Xiaohu and Gong, Yuan and Yuan, Zehuan and Zhao, Danpei and Yuan, Chun},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={4643--4652},
+  year={2022}
+}
+
+34. Channel-Wise Knowledge Distillation for Dense Prediction.
+@inproceedings{shu2021channel,
+  title={Channel-wise knowledge distillation for dense prediction},
+  author={Shu, Changyong and Liu, Yifan and Gao, Jianfei and Yan, Zheng and Shen, Chunhua},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  pages={5311--5320},
+  year={2021}
+}
+
+35. Masked Generative Distillation.
+@inproceedings{yang2022masked,
+  title={Masked generative distillation},
+  author={Yang, Zhendong and Li, Zhe and Shao, Mingqi and Shi, Dachuan and Yuan, Zehuan and Yuan, Chun},
+  booktitle={European conference on computer vision},
+  pages={53--69},
+  year={2022},
+  organization={Springer}
+}
+
+36. Knowledge Diffusion for Distillation.
+@article{huang2023knowledge,
+  title={Knowledge diffusion for distillation},
+  author={Huang, Tao and Zhang, Yuan and Zheng, Mingkai and You, Shan and Wang, Fei and Qian, Chen and Xu, Chang},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  pages={65299--65316},
+  year={2023}
+}
+
+37. Instance-Conditional Knowledge Distillation for Object Detection.
+@article{kang2021instance,
+  title={Instance-conditional knowledge distillation for object detection},
+  author={Kang, Zijian and Zhang, Peizhen and Zhang, Xiangyu and Sun, Jian and Zheng, Nanning},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  pages={16468--16480},
+  year={2021}
+}
+
+38. DetKDS: Knowledge Distillation Search for Object Detectors.
+@inproceedings{li2024detkds,
+  title={Detkds: Knowledge distillation search for object detectors},
+  author={Li, Lujun and Bao, Yufan and Dong, Peijie and Yang, Chuanguang and Li, Anggeng and Luo, Wenhan and Liu, Qifeng and Xue, Wei and Guo, Yike},
+  booktitle={Forty-first International Conference on Machine Learning},
+  year={2024}
+}
+
+39. Rethinking Centered Kernel Alignment in Knowledge Distillation.
+@article{zhou2024rethinking,
+  title={Rethinking centered kernel alignment in knowledge distillation},
+  author={Zhou, Zikai and Shen, Yunhang and Shao, Shitong and Gong, Linrui and Lin, Shaohui},
+  journal={arXiv preprint arXiv:2401.11824},
+  year={2024}
+}
+
+40. FreeKD: Knowledge Distillation via Semantic Frequency Prompt.
+@inproceedings{zhang2024freekd,
+  title={Freekd: Knowledge distillation via semantic frequency prompt},
+  author={Zhang, Yuan and Huang, Tao and Liu, Jiaming and Jiang, Tao and Cheng, Kuan and Zhang, Shanghang},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={15931--15940},
+  year={2024}
+}
+
+41. Attention Is All You Need.
+@article{vaswani2017attention,
+  title={Attention is all you need},
+  author={Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  journal={Advances in neural information processing systems},
+  volume={30},
+  year={2017}
+}
+
+42. Non-Local Neural Networks.
+@inproceedings{wang2018non,
+  title={Non-local neural networks},
+  author={Wang, Xiaolong and Girshick, Ross and Gupta, Abhinav and He, Kaiming},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={7794--7803},
+  year={2018}
+}
+
+43. Relation Networks for Object Detection.
+@inproceedings{hu2018relation,
+  title={Relation networks for object detection},
+  author={Hu, Han and Gu, Jiayuan and Zhang, Zheng and Dai, Jifeng and Wei, Yichen},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={3588--3597},
+  year={2018}
+}
+
+44. CanKD: Cross-Attention-Based Non-Local Operation for Feature-Based Knowledge Distillation.
+@inproceedings{sun2026cankd,
+  title={CanKD: Cross-Attention-based Non-local operation for Feature-based Knowledge Distillation},
+  author={Sun, Shizhe and Ohyama, Wataru},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={8606--8616},
+  year={2026}
+}
+
+45. C2KD: Bridging the Modality Gap for Cross-Modal Knowledge Distillation.
+@inproceedings{huo2024c2kd,
+  title={C2kd: Bridging the modality gap for cross-modal knowledge distillation},
+  author={Huo, Fushuo and Xu, Wenchao and Guo, Jingcai and Wang, Haozhao and Guo, Song},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={16006--16015},
+  year={2024}
+}
+
+46. EmotionKD: A Cross-Modal Knowledge Distillation Framework for Emotion Recognition Based on Physiological Signals.
+@inproceedings{liu2023emotionkd,
+  title={Emotionkd: a cross-modal knowledge distillation framework for emotion recognition based on physiological signals},
+  author={Liu, Yucheng and Jia, Ziyu and Wang, Haichao},
+  booktitle={Proceedings of the 31st ACM International Conference on Multimedia},
+  pages={6122--6131},
+  year={2023}
+}
+
+47. Invariant Scattering Convolution Networks.
+@article{bruna2013invariant,
+  title={Invariant scattering convolution networks},
+  author={Bruna, Joan and Mallat, St{\'e}phane},
+  journal={IEEE transactions on pattern analysis and machine intelligence},
+  volume={35},
+  number={8},
+  pages={1872--1886},
+  year={2013},
+  publisher={IEEE}
+}
+
+48. Wavelet Pooling for Convolutional Neural Networks.
+@inproceedings{williams2018wavelet,
+  title={Wavelet pooling for convolutional neural networks},
+  author={Williams, Travis and Li, Robert},
+  booktitle={International conference on learning representations},
+  year={2018}
+}
+
+49. Learning in the Frequency Domain.
+@inproceedings{xu2020learning,
+  title={Learning in the frequency domain},
+  author={Xu, Kai and Qin, Minghai and Sun, Fei and Wang, Yuhao and Chen, Yen-Kuang and Ren, Fengbo},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={1740--1749},
+  year={2020}
+}
+
+50. Frequency Attention for Knowledge Distillation.
+@inproceedings{pham2024frequency,
+  title={Frequency attention for knowledge distillation},
+  author={Pham, Cuong and Nguyen, Van-Anh and Le, Trung and Phung, Dinh and Carneiro, Gustavo and Do, Thanh-Toan},
+  booktitle={Proceedings of the IEEE/CVF winter conference on applications of computer vision},
+  pages={2277--2286},
+  year={2024}
+}
+
+51. Deep CORAL: Correlation Alignment for Deep Domain Adaptation.
+@inproceedings{sun2016deep,
+  title={Deep coral: Correlation alignment for deep domain adaptation},
+  author={Sun, Baochen and Saenko, Kate},
+  booktitle={European conference on computer vision},
+  pages={443--450},
+  year={2016},
+  organization={Springer}
+}
+
+52. Distilling Cross-Modal Knowledge via Feature Disentanglement.
+@inproceedings{liu2026distilling,
+  title={Distilling Cross-Modal Knowledge via Feature Disentanglement},
+  author={Liu, Junhong and Zhang, Yuan and Huang, Tao and Xu, Wenchao and Yang, Renyu},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={40},
+  number={28},
+  pages={23739--23747},
+  year={2026}
+}
+
+53. Feature Pyramid Networks for Object Detection.
+@inproceedings{lin2017feature,
+  title={Feature pyramid networks for object detection},
+  author={Lin, Tsung-Yi and Doll{\'a}r, Piotr and Girshick, Ross and He, Kaiming and Hariharan, Bharath and Belongie, Serge},
+  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages={2117--2125},
+  year={2017}
+}
+
+
+54. Generalized Focal Loss: Learning Qualified and Distributed Bounding Boxes for Dense Object Detection.
+@article{li2020generalized,
+  title={Generalized focal loss: Learning qualified and distributed bounding boxes for dense object detection},
+  author={Li, Xiang and Wang, Wenhai and Wu, Lijun and Chen, Shuo and Hu, Xiaolin and Li, Jun and Tang, Jinhui and Yang, Jian},
+  journal={Advances in neural information processing systems},
+  volume={33},
+  pages={21002--21012},
+  year={2020}
+}
+
+55. Generalized Intersection over Union: A Metric and a Loss for Bounding Box Regression.
+@inproceedings{rezatofighi2019generalized,
+  title={Generalized intersection over union: A metric and a loss for bounding box regression},
+  author={Rezatofighi, Hamid and Tsoi, Nathan and Gwak, JunYoung and Sadeghian, Amir and Reid, Ian and Savarese, Silvio},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={658--666},
+  year={2019}
+}
+
+56. Distance-IoU Loss: Faster and Better Learning for Bounding Box Regression.
+@inproceedings{zheng2020distance,
+  title={Distance-IoU loss: Faster and better learning for bounding box regression},
+  author={Zheng, Zhaohui and Wang, Ping and Liu, Wei and Li, Jinze and Ye, Rongguang and Ren, Dongwei},
+  booktitle={Proceedings of the AAAI conference on artificial intelligence},
+  volume={34},
+  number={07},
+  pages={12993--13000},
+  year={2020}
+}
+
+57. IoU Loss for 2D/3D Object Detection.
+@inproceedings{zhou2019iou,
+  title={Iou loss for 2d/3d object detection},
+  author={Zhou, Dingfu and Fang, Jin and Song, Xibin and Guan, Chenye and Yin, Junbo and Dai, Yuchao and Yang, Ruigang},
+  booktitle={2019 international conference on 3D vision (3DV)},
+  pages={85--94},
+  year={2019},
+  organization={IEEE}
+}
+
+58. Microsoft COCO: Common Objects in Context.
+@inproceedings{lin2014microsoft,
+  title={Microsoft coco: Common objects in context},
+  author={Lin, Tsung-Yi and Maire, Michael and Belongie, Serge and Hays, James and Perona, Pietro and Ramanan, Deva and Doll{\'a}r, Piotr and Zitnick, C Lawrence},
+  booktitle={European conference on computer vision},
+  pages={740--755},
+  year={2014},
+  organization={Springer}
+}
+
+
+
+
