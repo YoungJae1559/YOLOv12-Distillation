@@ -12,6 +12,14 @@
   </a>
 </p>
 
+<p align="center">
+  <img src="figure/Figure1.png" width="95%">
+</p>
+
+<p align="center">
+  <strong>Overview of YOLOv12 X to M distillation strategies.</strong>
+</p>
+
 ---
 
 ## 🔥 News
