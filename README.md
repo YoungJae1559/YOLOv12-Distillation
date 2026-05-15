@@ -94,7 +94,7 @@ YOLOv12-Distillation/
 └── .gitignore
 ```
 
-The following files are excluded from Git tracking.
+The following files are typically excluded from Git tracking.
 
 ```text
 runs/
@@ -134,6 +134,24 @@ pip install flash_attn-2.7.3+cu11torch2.2cxx11abiFALSE-cp311-cp311-linux_x86_64.
 
 ---
 
+## Environment Notes
+
+Some environments may require explicit runtime configuration for stable PyTorch and Ultralytics execution.
+
+```bash
+export REPO_ROOT=$(pwd)
+export MPLCONFIGDIR=/tmp/mpl
+export YOLO_CONFIG_DIR=/tmp/yolo_cfg
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$CONDA_PREFIX/lib/python3.11/site-packages/torch/lib
+export MKL_THREADING_LAYER=GNU
+export OMP_NUM_THREADS=1
+export KMP_DUPLICATE_LIB_OK=TRUE
+```
+
+If you encounter `Intel MKL FATAL ERROR` or `libtorch_cpu.so` loading issues, retry training after applying the environment variables above and reducing dataloader workers if needed, e.g. `workers=0` or `workers=4`.
+
+---
+
 ## Checkpoint Preparation
 
 This repository does not include YOLOv12 pretrained weights because large checkpoint files are excluded from Git.
@@ -141,7 +159,7 @@ This repository does not include YOLOv12 pretrained weights because large checkp
 Place the required `.pt` files in the project root directory.
 
 ```text
-/home/vip/harry/yolov12/
+YOLOv12-Distillation/
 ├── yolov12m.pt
 ├── yolov12n.pt
 ├── yolov12s.pt
@@ -151,13 +169,13 @@ Place the required `.pt` files in the project root directory.
 The default teacher checkpoint is:
 
 ```text
-/home/vip/harry/yolov12/yolov12x.pt
+${REPO_ROOT}/yolov12x.pt
 ```
 
 The default baseline student checkpoint is:
 
 ```text
-/home/vip/harry/yolov12/runs/detect/yolov12m/weights/best.pt
+${REPO_ROOT}/runs/detect/yolov12m/weights/best.pt
 ```
 
 ---
@@ -167,13 +185,13 @@ The default baseline student checkpoint is:
 The default dataset configuration is `coco.yaml`.
 
 ```text
-/home/vip/harry/yolov12/coco.yaml
+${REPO_ROOT}/coco.yaml
 ```
 
 Before training, check whether the dataset path inside `coco.yaml` is correctly configured.
 
 ```bash
-cat /home/vip/harry/yolov12/coco.yaml
+cat ${REPO_ROOT}/coco.yaml
 ```
 
 ---
@@ -183,9 +201,11 @@ cat /home/vip/harry/yolov12/coco.yaml
 Before distillation, train the YOLOv12-M student model.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 CUDA_VISIBLE_DEVICES=1 yolo detect train \
-  model=/home/vip/harry/yolov12/yolov12m.pt \
-  data=/home/vip/harry/yolov12/coco.yaml \
+  model=${REPO_ROOT}/yolov12m.pt \
+  data=${REPO_ROOT}/coco.yaml \
   epochs=50 \
   imgsz=640 \
   batch=16 \
@@ -197,7 +217,7 @@ CUDA_VISIBLE_DEVICES=1 yolo detect train \
 The trained baseline checkpoint will be saved to:
 
 ```text
-/home/vip/harry/yolov12/runs/detect/yolov12m/weights/best.pt
+${REPO_ROOT}/runs/detect/yolov12m/weights/best.pt
 ```
 
 ---
@@ -207,8 +227,10 @@ The trained baseline checkpoint will be saved to:
 Plain KD uses direct feature distillation and head output distillation.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 CUDA_VISIBLE_DEVICES=1 \
-YOLO_TEACHER=/home/vip/harry/yolov12/yolov12x.pt \
+YOLO_TEACHER=${REPO_ROOT}/yolov12x.pt \
 YOLO_KD_TYPE=plain_kd \
 YOLO_KD_W=0.1 \
 YOLO_KD_HEAD_W=0.2 \
@@ -221,8 +243,8 @@ YOLO_KD_P4=1.0 \
 YOLO_KD_P5=1.0 \
 YOLO_PLAIN_FEAT_W=1.0 \
 yolo detect train \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m/weights/best.pt \
-  data=/home/vip/harry/yolov12/coco.yaml \
+  model=${REPO_ROOT}/runs/detect/yolov12m/weights/best.pt \
+  data=${REPO_ROOT}/coco.yaml \
   epochs=50 \
   imgsz=640 \
   batch=16 \
@@ -238,8 +260,10 @@ yolo detect train \
 CanKD transfers teacher-student feature relations using cross-attention non-local distillation.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 CUDA_VISIBLE_DEVICES=1 \
-YOLO_TEACHER=/home/vip/harry/yolov12/yolov12x.pt \
+YOLO_TEACHER=${REPO_ROOT}/yolov12x.pt \
 YOLO_KD_TYPE=cankd \
 YOLO_KD_W=0.15 \
 YOLO_KD_HEAD_W=0.2 \
@@ -251,8 +275,8 @@ YOLO_KD_P3=0.5 \
 YOLO_KD_P4=1.0 \
 YOLO_KD_P5=1.25 \
 yolo detect train \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m/weights/best.pt \
-  data=/home/vip/harry/yolov12/coco.yaml \
+  model=${REPO_ROOT}/runs/detect/yolov12m/weights/best.pt \
+  data=${REPO_ROOT}/coco.yaml \
   epochs=50 \
   imgsz=640 \
   batch=16 \
@@ -263,15 +287,49 @@ yolo detect train \
 
 ---
 
-## 3. Head-only KD Fine-tuning
+## 3. Head-only KD
 
-This stage disables feature KD and applies only head output distillation.
+Head-only KD disables feature KD and applies only teacher head-output distillation.
 
-It is useful for short fine-tuning after CanKD training.
+### 3-1. Head-only KD from Scratch
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 CUDA_VISIBLE_DEVICES=1 \
-YOLO_TEACHER=/home/vip/harry/yolov12/yolov12x.pt \
+YOLO_TEACHER=${REPO_ROOT}/yolov12x.pt \
+YOLO_KD_TYPE=plain_kd \
+YOLO_KD_W=0.0 \
+YOLO_KD_HEAD_W=0.2 \
+YOLO_KD_HEAD_CLS_W=1.0 \
+YOLO_KD_HEAD_REG_W=1.0 \
+YOLO_KD_HEAD_TAU=2.0 \
+YOLO_KD_HEAD_MIN_CONF=0.1 \
+YOLO_KD_P3=0.0 \
+YOLO_KD_P4=0.0 \
+YOLO_KD_P5=0.0 \
+YOLO_PLAIN_FEAT_W=1.0 \
+yolo detect train \
+  model=yolov12m.yaml \
+  data=${REPO_ROOT}/coco.yaml \
+  epochs=50 \
+  imgsz=640 \
+  batch=16 \
+  device=0 \
+  amp=True \
+  workers=8 \
+  name=yolov12m_headonly_x2m
+```
+
+### 3-2. Head-only KD Fine-tuning after CanKD
+
+This stage is useful for short fine-tuning after CanKD training.
+
+```bash
+export REPO_ROOT=$(pwd)
+
+CUDA_VISIBLE_DEVICES=1 \
+YOLO_TEACHER=${REPO_ROOT}/yolov12x.pt \
 YOLO_KD_TYPE=cankd \
 YOLO_KD_W=0.0 \
 YOLO_KD_HEAD_W=0.30 \
@@ -286,8 +344,8 @@ YOLO_KD_HEAD_WARMUP_EPOCHS=1 \
 YOLO_KD_HEAD_DECAY_START=0.95 \
 YOLO_KD_HEAD_DECAY_MIN_RATIO=0.95 \
 yolo detect train \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
-  data=/home/vip/harry/yolov12/coco.yaml \
+  model=${REPO_ROOT}/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
+  data=${REPO_ROOT}/coco.yaml \
   epochs=15 \
   imgsz=640 \
   batch=16 \
@@ -307,8 +365,10 @@ FD-CMKD performs frequency-decoupled feature distillation.
 Low-frequency components are aligned using MSE loss, while high-frequency components are regularized using log-scaled feature loss.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 CUDA_VISIBLE_DEVICES=1 \
-YOLO_TEACHER=/home/vip/harry/yolov12/yolov12x.pt \
+YOLO_TEACHER=${REPO_ROOT}/yolov12x.pt \
 YOLO_KD_TYPE=fd_cmkd \
 YOLO_KD_W=0.1 \
 YOLO_KD_HEAD_W=0.2 \
@@ -324,8 +384,8 @@ YOLO_FD_LOW_W=1.0 \
 YOLO_FD_HIGH_W=0.5 \
 YOLO_FD_LOSS_W=1.0 \
 yolo detect train \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m/weights/best.pt \
-  data=/home/vip/harry/yolov12/coco.yaml \
+  model=${REPO_ROOT}/runs/detect/yolov12m/weights/best.pt \
+  data=${REPO_ROOT}/coco.yaml \
   epochs=50 \
   imgsz=640 \
   batch=16 \
@@ -341,9 +401,11 @@ yolo detect train \
 Evaluate a trained checkpoint on the validation set.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 yolo detect val \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
-  data=/home/vip/harry/yolov12/coco.yaml \
+  model=${REPO_ROOT}/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
+  data=${REPO_ROOT}/coco.yaml \
   imgsz=640 \
   batch=16 \
   device=0
@@ -352,9 +414,11 @@ yolo detect val \
 Evaluate the fine-tuned checkpoint.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 yolo detect val \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m_cankd_x2m_ft/weights/best.pt \
-  data=/home/vip/harry/yolov12/coco.yaml \
+  model=${REPO_ROOT}/runs/detect/yolov12m_cankd_x2m_ft/weights/best.pt \
+  data=${REPO_ROOT}/coco.yaml \
   imgsz=640 \
   batch=16 \
   device=0
@@ -367,8 +431,10 @@ yolo detect val \
 Run prediction using a trained distillation checkpoint.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 yolo detect predict \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
+  model=${REPO_ROOT}/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
   source=/path/to/images \
   imgsz=640 \
   device=0 \
@@ -382,8 +448,10 @@ yolo detect predict \
 Export the trained model to ONNX.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 yolo export \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
+  model=${REPO_ROOT}/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
   format=onnx \
   imgsz=640
 ```
@@ -391,8 +459,10 @@ yolo export \
 Export the trained model to TensorRT engine.
 
 ```bash
+export REPO_ROOT=$(pwd)
+
 yolo export \
-  model=/home/vip/harry/yolov12/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
+  model=${REPO_ROOT}/runs/detect/yolov12m_cankd_x2m_main/weights/best.pt \
   format=engine \
   imgsz=640 \
   half=True
@@ -437,7 +507,7 @@ Step 5. Evaluate all checkpoints under the same validation protocol
 
 ## Git Upload Note
 
-Large files and training outputs are excluded from this repository.
+Large files and training outputs are typically excluded from this repository.
 
 ```text
 runs/
